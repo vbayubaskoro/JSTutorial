@@ -190,6 +190,7 @@ console.log(addNums(1,2));
  // todos.forEach((todo) => console.log(todo))
 
 // OBJECT ORIENTED PROGRAMMING
+
 //construct objects from constructive function 
 // Constructor Function
 // can add methods: functions to this person object
@@ -218,6 +219,26 @@ Person.prototype.getFullName = function() {
 
 }
 
+//Class with methods
+// method: is a function inside of a class
+// prettier than doing prototype
+class Person2 {
+    constructor(firstName,LastName,dob){ // method
+    this.firstName = firstName; 
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+    } 
+
+    getBirthYear(){
+        return this.dob.getFullYear()
+
+    }
+
+    getFullName(){
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
 //Instantiate object
 const person1 = new Person('Vanessa', 'Teresa', '3-1-1998');
 const person2 = new Person('Ashley', 'K', '5-8-1997');
@@ -225,6 +246,64 @@ const person2 = new Person('Ashley', 'K', '5-8-1997');
 console.log(person2);
 
 // Methods which are just function to this person/objcet
+
+// DOM 
+// take HTML elements and work with them
+// by selectors 
+// want to use document object - makes the DOM
+// window object is the parent object, fetch API is in window
+
+
+// Single Element
+const form = document.getElementById('my-form');
+console.log(form);
+// querySelector : only selects one thing 
+console.log(document.querySelector('h1'));
+
+// Mutiple Element
+console.log(document.querySelectorAll('.item')); //nodeList: like array, can use array methods
+console.log(document.getElementsByClassName('item')); //HTMLCollection
+
+
+const items = document.querySelectorAll('.item');
+items.forEach((item) => console.log(item));
+
+const ul = document.querySelector('.items');
+// ul.remove();
+//ul.lastElementChild.remove();
+ul.firstElementChild.textContent =  'Hello'; // changing the actual data (console), but not on html?
+ul.children[1].innerText = 'Brad';
+ul.lastElementChild.innerHTML = ' Chad';
+
+const btn = document.querySelector('.btn');
+btn.style.background = 'pink';
+
+//EVENTS
+btn.addEventListener('click', (e) =>{  // e is event parameter
+    e.preventDefault();// prevent the default behaviourr of flashing, the forrm is no longerr submitting
+    //console.log(e.target); // function when this even happens
+    document.querySelector('#my-form').style.background = '#ccc';
+    //document.querySelector('body').classList.add('bg-dark');
+}
+);
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('.msg');
+const userList = document.querySelector('#user');
+
+myForm.addEventListener('submit', onSubmit);
+
+function onSubmit(e) {
+    e.preventDefault();
+
+    //console.log(nameInput.value);
+    if(nameInput.value ==='' || emailInput.value === ''){ // this does not work??
+        alert('Please enter fields');
+    }
+}
+
 
 
 
